@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CRM.Models.Address>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressGlobalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressGlobalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HouseNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AddressId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AddressId })
+        </td>
+    </tr>
+}
+
+</table>

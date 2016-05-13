@@ -1,0 +1,46 @@
+﻿@model CRM.ViewModels.CustomersViewModel
+
+@{
+	ViewBag.Title = "Home";
+}
+
+
+
+
+<div class="row ">
+	<div class="col-sm-6 ">
+		<h4>Customers</h4>
+		<hr />
+		@{
+			Html.RenderPartial("_CustomerListPartial", Model);
+		}
+	</div>
+	<div class="col-sm-6 ">
+		
+		@{
+			if (Model.SelectedCustomer != null)
+			{
+				if (Model.DisplayMode == "ReadOnly")
+				{
+					Html.RenderPartial("ShowCustomer", Model.SelectedCustomer);
+				}
+				if (Model.DisplayMode == "ReadWrite")
+				{
+					Html.RenderPartial("EditCustomer", Model.SelectedCustomer);
+				}
+			}
+			if (Model.DisplayMode == "WriteOnly")
+			{
+				Html.RenderPartial("InsertCustomer", new CRM.Models.Customer());
+			}
+		}
+	</div>
+
+</div>
+
+
+
+
+
+
+

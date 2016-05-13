@@ -1,0 +1,24 @@
+﻿@model CRM.Models.Customer
+
+<h4>New Customer</h4>
+<hr/>
+@using (Html.BeginForm("Insert", "Home", FormMethod.Post))
+{
+	<div class="form-group">
+		<input type="submit" class="btn btn-default" value="Save" formaction="/home/insert"/>
+		<input type="submit" class="btn btn-default" value="Cancel" formaction="/home/index"/>
+	</div>
+	<hr/>
+	<div class="form-group">
+		<label for="module-customer-insert-companyname">Company Name:</label>
+		@Html.TextBoxFor(m => m.CompanyName, new {@class = "form-control", @id = "module-customer-insert-companyname"})
+	</div>
+	<div class="form-group">
+		<label for="module-customer-insert-contactname">Contact Name:</label>
+		@Html.TextBoxFor(m => m.ContactName, new {@class = "form-control", @id = "module-customer-insert-contactname" })
+	</div>
+	<div class="form-group">
+		<label for="module-customer-insert-country">Country:</label>
+		@Html.TextBoxFor(m => m.Country, new {@class = "form-control", @id = "module-customer-insert-country"})
+	</div>
+}

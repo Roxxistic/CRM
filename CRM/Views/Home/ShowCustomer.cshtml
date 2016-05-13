@@ -1,0 +1,30 @@
+﻿@model CRM.Models.Customer
+
+<h4>Customer Detail</h4>
+<hr />
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+	<div class="form-group">
+		<input type="submit" class="btn btn-default" value="Edit" formaction="/home/edit/@Model.CustomerId" />
+		<input type="submit" class="btn btn-default" value="Cancel" formaction="/home/index" />
+		<input type="submit" class="btn btn-default" value="Delete" formaction="/home/delete/@Model.CustomerId" />
+	</div>
+	<hr />
+	<div class="form-group">
+		<label for="module-customer-edit-customerid">Customer Id:</label>
+		@Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control", @id = "module-customer-edit-customerid", @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-companyname">Company Name:</label>
+		@Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @id = "module-customer-edit-companyname", @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-contactname">Contact Name:</label>
+		@Html.TextBoxFor(m => m.ContactName, new { @class = "form-control", @id = "module-customer-edit-contactname", @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-country">Country:</label>
+		@Html.TextBoxFor(m => m.Country, new { @class = "form-control", @id = "module-customer-edit-country", @readonly = "readonly" })
+	</div>
+
+}

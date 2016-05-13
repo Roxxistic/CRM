@@ -1,0 +1,62 @@
+﻿@model CRM.ViewModels.CustomersViewModel
+
+@{
+	ViewBag.Title = "Customer";
+}
+
+
+<div class="row ">
+	<div class="col-sm-6 ">
+		<h4>Customers</h4>
+		<hr/>
+		<form method="post">
+			<div class="form-group">
+				<button type="submit" class="btn btn-default" formaction="/Customer/New" title="Insert"><span class="glyphicon glyphicon-plus"></span></button>
+			</div>
+		</form>
+		<hr />
+		@{
+			Html.RenderPartial("CustomerListPartial", Model);
+		}
+	</div>
+	<div class="col-sm-6 ">
+
+		@{
+			if (Model.SelectedCustomer != null)
+			{
+				if (Model.DisplayMode == "CustomerDetails")
+				{
+					Html.RenderPartial("CustomerDetailsPartial", Model.SelectedCustomer);
+				}
+				if (Model.DisplayMode == "CustomerEdit")
+				{
+					Html.RenderPartial("CustomerEditPartial", Model.SelectedCustomer);
+				}
+				if (Model.DisplayMode == "AddressNew")
+				{
+					Html.RenderPartial("CustomerDetailsPartial", Model.SelectedCustomer);
+					@:<hr/>
+					Html.RenderPartial("CustomerAddressNewPartial", Model.newAddress);
+				}
+				if (Model.DisplayMode == "AddressEdit")
+				{
+					Html.RenderPartial("CustomerDetailsPartial", Model.SelectedCustomer);
+					@:<hr />
+					Html.RenderPartial("CustomerAddressEditPartial", Model.SelectedAddress);
+				}
+			}
+			if (Model.DisplayMode == "CustomerNew")
+			{
+				Html.RenderPartial("CustomerNewPartial", new CRM.Models.Customer());
+			}
+}
+	</div>
+
+</div>
+
+
+
+
+
+
+

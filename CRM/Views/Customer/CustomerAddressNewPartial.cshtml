@@ -1,0 +1,34 @@
+﻿@using CRM.Models
+@model CRM.Models.Address
+
+<h4>Customer Detail & Edit</h4>
+<hr />
+@using (Html.BeginForm("AddAddressSave", "Customer", FormMethod.Post))
+{
+	<div class="form-group">
+		<input type="submit" class="btn btn-default" value="Save Changes" formaction="/Customer/AddAddressSave" />
+	</div>
+	<hr />
+	<div class="form-group hidden">
+		@Html.TextBoxFor(m => m.AddressId, new { @class = "form-control hidden", @readonly = "readonly" })
+		@Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control hidden", @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		<label>Street:</label>
+		@Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>House Number:</label>
+		@Html.TextBoxFor(m => m.HouseNumber, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Postal Code:</label>
+		@Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Place:</label>
+		@Html.TextBoxFor(m => m.Place, new { @class = "form-control" })
+	</div>
+
+}
+

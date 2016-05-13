@@ -1,0 +1,42 @@
+﻿@model CRM.Models.Customer
+
+<h4>Customer Detail & Edit</h4>
+<hr />
+@using (Html.BeginForm("Edit", "Customer", FormMethod.Post))
+{
+	<div class="form-group">
+		<input type="submit" class="btn btn-default" value="Save Changes" formaction="/Customer/EditSave/@Model.CustomerId"/>
+		<input type="submit" class="btn btn-default" value="Add Address" formaction="/Customer/AddAddress/@Model.CustomerId" />
+		<input type="submit" class="btn btn-default" value="Cancel" formaction="/Customer/index" />
+		<input type="submit" class="btn btn-default" value="Delete" formaction="/Customer/delete/@Model.CustomerId"/>
+		
+	</div>
+	<hr />
+	<div class="form-group">
+		<label for="module-customer-edit-customerid">Customer Id:</label>
+		@Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control", @id = "module-customer-edit-customerid", @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-companyname">Company Name:</label>
+		@Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @id = "module-customer-edit-companyname"})
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-contactname">Contact Name:</label>
+		@Html.TextBoxFor(m => m.ContactName, new { @class = "form-control", @id = "module-customer-edit-contactname"})
+	</div>
+	<div class="form-group">
+		<label for="module-customer-edit-country">Country:</label>
+		@Html.TextBoxFor(m => m.Country, new {@class = "form-control", @id = "module-customer-edit-country"})
+	</div>
+	<div class="form-group">
+		<label>Addresses</label>
+		<ul class="">
+
+			@foreach (var address in Model.Addresses)
+			{
+				<li>@Html.Raw(address.AddressGlobalName) (@Html.Raw(address.AddressId))</li>
+			}
+		</ul>
+	</div>
+
+}

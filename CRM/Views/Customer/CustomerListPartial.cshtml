@@ -1,0 +1,33 @@
+﻿<form method="post">
+	
+	<table class="table table-hover">
+		<tr>
+			<th>CustomerId</th>
+			<th>CompanyName</th>
+			<th>Actions</th>
+		</tr>
+		@foreach (var item in Model.Customers)
+		{
+			if (Model.SelectedCustomer != null)
+			{
+				if (item.CustomerId == Model.SelectedCustomer.CustomerId)
+				{
+					@:<tr class="active">
+				}
+				else
+				{
+					@:<tr>
+				}
+			}
+			else
+			{
+				@:<tr>
+			}
+			<td>@item.CustomerId</td>
+			<td>@item.CompanyName</td>
+			<td>
+				<input type="submit" class="btn btn-default pull-right" value="Details" formaction="/Customer/Select/@item.CustomerId"/>
+			</td>
+		}
+	</table>
+</form>

@@ -1,0 +1,31 @@
+﻿@model CRM.Models.Address
+	
+<h4>Edit Address</h4>
+<hr />
+<form method="post">
+	<div class="form-group">
+		<input type="submit" class="btn btn-default" value="Save Changes" formaction="/Customer/EditAddressSave/@Model.CustomerId"/>
+		<input type="submit" class="btn btn-default" value="Cancel" formaction="/Customer/Select/@Model.CustomerId"/>
+		<input type="submit" class="btn btn-default" value="Delete" formaction="/Customer/AddressDelete/@Model.CustomerId"/>
+	</div>
+	<div class="form-group hidden">
+		@Html.TextBoxFor(m => m.CustomerId, new {@class = "form-control", @readonly = "readonly"})
+		@Html.TextBoxFor(m => m.AddressId, new {@class = "form-control", @readonly = "readonly"})
+	</div>
+	<div class="form-group">
+		<label>Street:</label>
+		@Html.TextBoxFor(m => m.Street, new {@class = "form-control"})
+	</div>
+	<div class="form-group">
+		<label>House Number:</label>
+		@Html.TextBoxFor(m => m.HouseNumber, new {@class = "form-control"})
+	</div>
+	<div class="form-group">
+		<label>Postal Code:</label>
+		@Html.TextBoxFor(m => m.PostalCode, new {@class = "form-control"})
+	</div>
+	<div class="form-group">
+		<label>Place:</label>
+		@Html.TextBoxFor(m => m.Place, new { @class = "form-control" })
+	</div>
+</form>
